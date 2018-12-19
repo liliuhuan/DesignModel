@@ -2,9 +2,17 @@ package com.xdf.llh.designdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.google.gson.Gson;
 import com.xdf.llh.designdemo.builder.Product;
+import com.xdf.llh.designdemo.observer.ObserverCreator;
 import com.xdf.llh.designdemo.proxy.ProxyRun;
+
+import org.json.JSONObject;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * @author dell
@@ -32,5 +40,22 @@ public class MainActivity extends AppCompatActivity {
          * 简单的动态代理
          */
         new ProxyRun().proxyRun4();
+
+        /**
+         * 观察者模式
+         */
+        new ObserverCreator().crate();
+
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("title", "zhangshan");
+            jsonObject.put("id", 2);
+            Logger.loge(jsonObject.toString());
+            TestData testData = new Gson().fromJson(jsonObject.toString(), TestData.class);
+            Logger.loge(testData.toString());
+        } catch (Exception e) {
+            Logger.loge(e.getMessage());
+        }
+
     }
 }
