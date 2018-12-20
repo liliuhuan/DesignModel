@@ -2,9 +2,12 @@ package com.xdf.llh.designdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.BaseAdapter;
 
 import com.google.gson.Gson;
+import com.xdf.llh.designdemo.adapter.AdapterCreator;
 import com.xdf.llh.designdemo.builder.Product;
 import com.xdf.llh.designdemo.observer.ObserverCreator;
 import com.xdf.llh.designdemo.proxy.ProxyRun;
@@ -23,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        try {
+//            JSONObject jsonObject = new JSONObject();
+//            jsonObject.put("title", "zhangshan");
+//            jsonObject.put("id", 2);
+//            Logger.loge(jsonObject.toString());
+//            TestData testData = new Gson().fromJson(jsonObject.toString(), TestData.class);
+//            Logger.loge(testData.toString());
+//        } catch (Exception e) {
+//            Logger.loge(e.getMessage());
+//        }
         /**
          * 一般工厂模式
          */
@@ -35,27 +48,21 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 简单的builder模式
          */
-        new Product.Builder().setTitle("止咳糖浆").setDes("专治小儿咳嗽，哮喘等引起的一系列问题！").build().printProduct();
+     //   new Product.Builder().setTitle("止咳糖浆").setDes("专治小儿咳嗽，哮喘等引起的一系列问题！").build().printProduct();
         /**
          * 简单的动态代理
          */
-        new ProxyRun().proxyRun4();
+     //   new ProxyRun().proxyRun4();
 
         /**
          * 观察者模式
          */
-        new ObserverCreator().crate();
+     //   new ObserverCreator().crate();
+        /**
+         * 适配器模式
+         */
+        new AdapterCreator().create();
 
-        try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("title", "zhangshan");
-            jsonObject.put("id", 2);
-            Logger.loge(jsonObject.toString());
-            TestData testData = new Gson().fromJson(jsonObject.toString(), TestData.class);
-            Logger.loge(testData.toString());
-        } catch (Exception e) {
-            Logger.loge(e.getMessage());
-        }
-
+//        RecyclerView
     }
 }
