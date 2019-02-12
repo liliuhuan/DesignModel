@@ -10,6 +10,7 @@ import com.xdf.llh.designdemo.db.BaseBean;
 import com.xdf.llh.designdemo.db.SQLiteDBHelper;
 import com.xdf.llh.designdemo.db.StudentBean;
 import com.xdf.llh.designdemo.db.StudentTable;
+import com.xdf.llh.designdemo.db.ThreadManager;
 
 /**
  * @author dell
@@ -108,5 +109,12 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
         }.execute();
+
+        ThreadManager.getSinglePool().execute(new Runnable() {
+            @Override
+            public void run() {
+                studentTable.updateData(new StudentBean(1, "stu-name+2", "ss2"));
+            }
+        });
     }
 }
