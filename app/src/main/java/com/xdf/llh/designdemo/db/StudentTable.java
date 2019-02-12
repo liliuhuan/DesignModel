@@ -27,7 +27,8 @@ public class StudentTable implements BaseTable<StudentBean> {
             + ID + " Integer primary key autoincrement, "
             + STUDENT_ID + " Integer, "
             + STUDENT_NAME + " TEXT, "
-            + STUDENT_INFO + " TEXT ) ";
+            + STUDENT_INFO + " TEXT "
+            + STUDENT_ADDRESS + " TEXT ) ";
 
     public static String CREATE_TEMP_STUDENT = "alter table " + TABLE_NAME + " rename to " + TEMP_TABLE_NAME;
     public static String INSERT_DATA = "insert into " + TABLE_NAME + " select * from " + TEMP_TABLE_NAME;
@@ -98,6 +99,7 @@ public class StudentTable implements BaseTable<StudentBean> {
             stuBean.setStuName(stuName);
             stuBean.setStuInfo(stuInfo);
         }
+        cursor.close();
         return stuBean;
     }
 }

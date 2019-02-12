@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class SQLiteDBHelper extends SQLiteOpenHelper {
     private final static String DB_NAME = "student.db";
-    private final static int VERSION = 1;
+    private final static int VERSION = 2;
     private SQLiteDatabase db = null;
     private static SQLiteDBHelper instance;
 
