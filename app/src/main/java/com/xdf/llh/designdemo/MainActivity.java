@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.xdf.llh.designdemo.adapter.AdapterCreator;
-import com.xdf.llh.designdemo.db.AsyDBManager;
-import com.xdf.llh.designdemo.db.BaseBean;
-import com.xdf.llh.designdemo.db.SQLiteDBHelper;
-import com.xdf.llh.designdemo.db.StudentBean;
-import com.xdf.llh.designdemo.db.StudentTable;
-import com.xdf.llh.designdemo.db.ThreadManager;
+import com.xdf.llh.other.db.AsyDBManager;
+import com.xdf.llh.other.db.BaseBean;
+import com.xdf.llh.other.db.SQLiteDBHelper;
+import com.xdf.llh.other.db.StudentBean;
+import com.xdf.llh.other.db.StudentTable;
+import com.xdf.llh.other.db.ThreadManager;
 
 /**
  * @author dell
@@ -58,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
          */
         new AdapterCreator().create();
 
-/***
- * 数据库操作部分
- */
+    /***
+    * 数据库操作部分
+    */
 
         final StudentTable studentTable = SQLiteDBHelper.newInstance(this).getStudentTable();
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {

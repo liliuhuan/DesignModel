@@ -1,4 +1,4 @@
-package com.xdf.llh.designdemo.dagger2;
+package com.xdf.llh.other.dagger2;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

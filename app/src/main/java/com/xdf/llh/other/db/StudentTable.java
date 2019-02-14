@@ -1,4 +1,4 @@
-package com.xdf.llh.designdemo.db;
+package com.xdf.llh.other.db;
 
 import android.content.ContentValues;
 import android.database.Cursor;

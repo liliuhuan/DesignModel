@@ -3,7 +3,7 @@
     package="com.xdf.llh.designdemo">
 
     <application
-        android:name=".dagger2.BaseApplication"
+        android:name="com.xdf.llh.other.dagger2.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,14 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".dagger2.TestDaggerActivity">
+        <activity android:name="com.xdf.llh.other.dagger2.TestDaggerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".rxjava.TestRxjavaActivity"></activity>
+        <activity android:name="com.xdf.llh.other.rxjava.TestRxjavaActivity"></activity>
     </application>
 
 </manifest>

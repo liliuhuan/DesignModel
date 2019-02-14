@@ -1,4 +1,4 @@
-package com.xdf.llh.designdemo.dagger2;
+package com.xdf.llh.other.dagger2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

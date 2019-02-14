@@ -1,4 +1,4 @@
-package com.xdf.llh.designdemo.rxjava;
+package com.xdf.llh.other.rxjava;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -7,20 +7,14 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.xdf.llh.designdemo.R;
-import com.xdf.llh.designdemo.TestData;
-import com.xdf.llh.designdemo.dagger2.TestDaggerActivity;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.xdf.llh.other.dagger2.TestDaggerActivity;
 
 import rx.Observable;
 import rx.Observer;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
@@ -230,10 +224,10 @@ public class TestRxjavaActivity extends AppCompatActivity {
          * flatMap
          */
 
-        TestFlatMapBean[] datas = {};
-        Observable.from(datas).flatMap(new Func1<TestFlatMapBean, Observable<TestFlatMapBean.Course>>() {
+        com.xdf.llh.other.rxjava.TestFlatMapBean[] datas = {};
+        Observable.from(datas).flatMap(new Func1<com.xdf.llh.other.rxjava.TestFlatMapBean, Observable<com.xdf.llh.other.rxjava.TestFlatMapBean.Course>>() {
             @Override
-            public Observable<TestFlatMapBean.Course> call(TestFlatMapBean testData) {
+            public Observable<com.xdf.llh.other.rxjava.TestFlatMapBean.Course> call(com.xdf.llh.other.rxjava.TestFlatMapBean testData) {
                 return Observable.from(testData.getCourses());
             }
         })
@@ -243,9 +237,9 @@ public class TestRxjavaActivity extends AppCompatActivity {
 //                return null;
 //            }
 //        })
-                .subscribe(new Action1<TestFlatMapBean.Course>() {
+                .subscribe(new Action1<com.xdf.llh.other.rxjava.TestFlatMapBean.Course>() {
                     @Override
-                    public void call(TestFlatMapBean.Course course) {
+                    public void call(com.xdf.llh.other.rxjava.TestFlatMapBean.Course course) {
                         Log.e(tag, course.getName());
                     }
                 });
