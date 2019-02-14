@@ -3,6 +3,7 @@ package com.xdf.llh.designdemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.xdf.llh.designdemo.adapter.AdapterCreator;
 import com.xdf.llh.other.db.AsyDBManager;
@@ -58,63 +59,65 @@ public class MainActivity extends AppCompatActivity {
          */
         new AdapterCreator().create();
 
-    /***
-    * 数据库操作部分
-    */
+        /***
+         * 数据库操作部分
+         */
+//
+//        final StudentTable studentTable = SQLiteDBHelper.newInstance(this).getStudentTable();
+//        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                studentTable.insertData(new StudentBean(1, "stu-name+1", "ss"));
+//            }
+//        });
+//        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                studentTable.deleteData(new StudentBean(1, "", ""));
+//            }
+//        });
+//        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                studentTable.updateData(new StudentBean(1, "stu-name+2", "ss2"));
+//            }
+//        });
+//        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                StudentBean studentBean = studentTable.queryByFilter("1");
+//                if (studentBean != null)
+//                    Logger.loge(studentBean.toString());
+//            }
+//        });
+//        new AsyDBManager<BaseBean>() {
+//            @Override
+//            protected BaseBean doInBackground() {
+//                // TODO: 2019/2/12  数据库查询操作
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(BaseBean result) {
+//                super.onPostExecute(result);
+//                // TODO: 2019/2/12 查询的结果
+//            }
+//        }.execute();
+//
+//        new AsyDBManager<Void>() {
+//            @Override
+//            protected Void doInBackground() {
+//                return null;
+//            }
+//        }.execute();
+//
+//        ThreadManager.getSinglePool().execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                studentTable.updateData(new StudentBean(1, "stu-name+2", "ss2"));
+//            }
+//        });
 
-        final StudentTable studentTable = SQLiteDBHelper.newInstance(this).getStudentTable();
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                studentTable.insertData(new StudentBean(1, "stu-name+1", "ss"));
-            }
-        });
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                studentTable.deleteData(new StudentBean(1, "", ""));
-            }
-        });
-        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                studentTable.updateData(new StudentBean(1, "stu-name+2", "ss2"));
-            }
-        });
-        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StudentBean studentBean = studentTable.queryByFilter("1");
-                if (studentBean != null)
-                    Logger.loge(studentBean.toString());
-            }
-        });
-        new AsyDBManager<BaseBean>() {
-            @Override
-            protected BaseBean doInBackground() {
-                // TODO: 2019/2/12  数据库查询操作
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(BaseBean result) {
-                super.onPostExecute(result);
-                // TODO: 2019/2/12 查询的结果
-            }
-        }.execute();
-
-        new AsyDBManager<Void>() {
-            @Override
-            protected Void doInBackground() {
-                return null;
-            }
-        }.execute();
-
-        ThreadManager.getSinglePool().execute(new Runnable() {
-            @Override
-            public void run() {
-                studentTable.updateData(new StudentBean(1, "stu-name+2", "ss2"));
-            }
-        });
+        ((TextView) findViewById(R.id.tv)).setText("输入的字符是：A1,A2,S2,E1,R4,E2,E3,R5,S3,S4  \n 输出字符：" + Test.check("A1,A2,S2,E1,R4,E2,E3,R5,S3,S4"));
     }
 }
