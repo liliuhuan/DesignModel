@@ -118,6 +118,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        ((TextView) findViewById(R.id.tv)).setText("输入的字符是：A1,A2,S2,E1,R4,E2,E3,R5,S3,S4  \n 输出字符：" + Test.check("A1,A2,S2,E1,R4,E2,E3,R5,S3,S4"));
+        ((TextView) findViewById(R.id.tv)).setText("输入的字符是：\nA1,A2,S2,E1,R4,E2,E3,R5,S3,S4  \n输出字符：\n" + Test.check("A1,A2,S2,E1,R4,E2,E3,R5,S3,S4"));
     }
 }
