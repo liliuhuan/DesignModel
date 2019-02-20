@@ -3,7 +3,7 @@ package com.xdf.llh.designdemo.simple_factory.data;
 import com.xdf.llh.designdemo.Logger;
 import com.xdf.llh.designdemo.simple_factory.Human;
 
-public abstract class BlackHuman implements Human {
+public  class BlackHuman implements Human {
     @Override
     public void getColor() {
         Logger.loge("黑人的颜色事黑色的！");

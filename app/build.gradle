@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+//    packagingOptions {
+//        exclude 'META-INF/services/javax.annotation.processing.Processor'
+//    }
 }
 
 dependencies {
@@ -33,4 +37,8 @@ dependencies {
 
     implementation 'io.reactivex:rxjava:1.3.4'
     implementation 'io.reactivex:rxandroid:1.2.1'
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
 }

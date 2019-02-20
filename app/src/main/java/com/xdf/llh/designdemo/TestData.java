@@ -10,6 +10,11 @@ public class TestData {
     private String title;
     private String id;
 
+    public TestData(String title, String id) {
+        this.title = title;
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }

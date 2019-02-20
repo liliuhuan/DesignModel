@@ -1,6 +1,7 @@
 # DesignModel
 java中的设计模式篇
 
+* algorithms 算法部分
 * designdemo 设计模式几篇
 * other 涉及部分新技术
     * dagger2 框架demo

@@ -1,18 +1,21 @@
 package com.xdf.llh.designdemo.simple_factory.impl;
 
 import com.xdf.llh.designdemo.Logger;
-import com.xdf.llh.designdemo.simple_factory.AbstractHumanFactory;
+import com.xdf.llh.designdemo.simple_factory.IHumanFactory;
 import com.xdf.llh.designdemo.simple_factory.Human;
 
 /**
  * 工厂类
  */
-public class HumanFactory extends AbstractHumanFactory {
-    /** 一般工厂模式
+public class HumanFactory implements IHumanFactory {
+    /**
+     * 一般工厂模式    通过反射，传入不同的人中创建不同的实例
+     *
      * @param c
      * @param <T>
      * @return
      */
+
     @Override
     public <T extends Human> T createHuman(Class<T> c) {
         Human human = null;
@@ -25,7 +28,9 @@ public class HumanFactory extends AbstractHumanFactory {
         return (T) human;
     }
 
-    /** 简单工厂模式
+    /**
+     * 简单工厂模式  通过反射，传入不同的人中创建不同的实例
+     *
      * @param c
      * @param <T>
      * @return
@@ -40,5 +45,8 @@ public class HumanFactory extends AbstractHumanFactory {
         }
         return (T) human;
     }
-
+  @Override
+    public Human createHuman() {
+        return null;
+    }
 }

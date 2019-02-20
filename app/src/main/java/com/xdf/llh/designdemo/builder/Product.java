@@ -12,6 +12,7 @@ import com.xdf.llh.designdemo.Logger;
  * @author dell
  */
 public class Product {
+
     private String title ;
     private String des;
     private Product(Builder builder) {

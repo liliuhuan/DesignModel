@@ -1,7 +1,12 @@
 package com.xdf.llh.designdemo.proxy;
 
+import com.xdf.llh.designdemo.Logger;
 import com.xdf.llh.designdemo.proxy.dynamic.DynamicProxy;
 import com.xdf.llh.designdemo.proxy.staticproxy.ProxyGamePlayer;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * author: 李刘欢
@@ -44,7 +49,7 @@ public class ProxyRun {
      * 动态代理
      */
     public void proxyRun4() {
-        IGamePlayer nomalGamePlayer = new NomalGamePlayer();
+        final IGamePlayer nomalGamePlayer = new NomalGamePlayer();
 //        InvocationHandler handler = new DynamicGamePlayer<>(nomalGamePlayer);
 //        ClassLoader classLoader = nomalGamePlayer.getClass().getClassLoader();
 //        IGamePlayer poxy = (IGamePlayer) Proxy.newProxyInstance(classLoader, new Class[]{IGamePlayer.class}, handler);
@@ -54,5 +59,15 @@ public class ProxyRun {
         poxy.login("张三", "password");
         poxy.killBoss();
         poxy.upgrade();
+
+        IGamePlayer proxyInstance = (IGamePlayer) Proxy.newProxyInstance(nomalGamePlayer.getClass().getClassLoader(), nomalGamePlayer.getClass().getInterfaces(), new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                if (method.getName().equals("login")) {
+                    Logger.loge("有人在登录账号");
+                }
+                return method.invoke(nomalGamePlayer, args);
+            }
+        });
     }
 }

@@ -1,6 +1,6 @@
 package com.xdf.llh.designdemo.simple_factory.impl;
 
-import com.xdf.llh.designdemo.simple_factory.AbstractHumanFactory;
+import com.xdf.llh.designdemo.simple_factory.IHumanFactory;
 import com.xdf.llh.designdemo.simple_factory.Human;
 import com.xdf.llh.designdemo.simple_factory.IFactoryCreator;
 import com.xdf.llh.designdemo.simple_factory.data.BlackHuman;
@@ -9,11 +9,16 @@ import com.xdf.llh.designdemo.simple_factory.data.YellowHuman;
 import com.xdf.llh.designdemo.simple_factory.impl.human.BlackHumanFactory;
 import com.xdf.llh.designdemo.simple_factory.impl.human.WitheHumanFactory;
 import com.xdf.llh.designdemo.simple_factory.impl.human.YellowHumanFactory;
-
+/**
+* 简单工厂测试类
+*/
 public class FactoryCreator implements IFactoryCreator {
+    /**
+    * 通过反射，传入不同的人中创建不同的实例
+    */
     @Override
     public void create() {
-        AbstractHumanFactory humanFactory = new HumanFactory();
+        IHumanFactory humanFactory = new HumanFactory();
 
         Human balckHuman = humanFactory.createHuman(BlackHuman.class);
         printHuman(balckHuman);
@@ -48,7 +53,9 @@ public class FactoryCreator implements IFactoryCreator {
         Human witheHuman = new WitheHumanFactory().createHuman();
         printHuman(witheHuman);
     }
-
+    /**
+    * 打印基本信息
+    */
     private void printHuman(Human human) {
         human.getColor();
         human.talk();

@@ -10,7 +10,14 @@ import com.xdf.llh.designdemo.Logger;
  */
 public class AdapterCreator {
     public void create(){
-        Power5vAdapter adapter = new Power5vAdapter(new Ac220());
-        Logger.loge("220v转换后的电压是："+adapter.output5v());
+        try {
+            Class<?> aClass = Class.forName("com.xdf.llh.designdemo.adapter.Ac220");
+            Ac220 newInstance = (Ac220)aClass.newInstance();
+            IDc5vAdapter adapter = new Power5VAdapterAdapter(newInstance);
+            Logger.loge("220v转换后的电压是："+adapter.output5v());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
