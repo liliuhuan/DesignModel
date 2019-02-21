@@ -69,6 +69,9 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     public void printTree() {
+        if (isEmpty()) {
+            return;
+        }
         printTree(root);
     }
 
@@ -131,12 +134,17 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         } else if (root.left != null && root.right != null) {// TODO: 2019/2/20 两个孩子的节点
             root.element = findMin(root.right).element;
             root.right = remove(root.element, root.right);
-        }else {
+        } else {
             root = (root.left != null) ? root.left : root.right;
         }
         return root;
     }
 
     private void printTree(BinaryNode<T> root) {
+        if (root != null) {
+            printTree(root.left);
+            System.out.print(root.element);
+            printTree(root.right);
+        }
     }
 }
