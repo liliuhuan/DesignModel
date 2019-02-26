@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name="com.xdf.llh.other.dagger2.TestDaggerActivity" />
         <activity android:name="com.xdf.llh.other.rxjava.TestRxjavaActivity" />
         <activity android:name="com.xdf.llh.other.viewconflict.DispathTouchViewActivity">
@@ -20,7 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.xdf.llh.other.memoryleak.MemoryLeakActivity"></activity>
+        <activity android:name="com.xdf.llh.other.memoryleak.MemoryLeakActivity" />
+        <activity android:name="com.xdf.llh.other.thead.HandleThreadActivity" />
+        <activity android:name="com.xdf.llh.other.thead.IntentServiceActivity" />
+
+        <service android:name="com.xdf.llh.other.thead.IntentServiceActivity$MyIntentService" />
+
+        <activity android:name="com.xdf.llh.other.thead.AsyncTaskActivity"></activity>
     </application>
 
 </manifest>
