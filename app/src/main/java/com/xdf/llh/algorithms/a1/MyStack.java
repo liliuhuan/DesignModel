@@ -1,4 +1,4 @@
-package com.xdf.llh.algorithms;
+package com.xdf.llh.algorithms.a1;
 
 /**
  * author: 李刘欢
@@ -9,6 +9,9 @@ package com.xdf.llh.algorithms;
 public class MyStack<T> {
     private int maxSize;
     private T[] array;
+    /**
+     * 记录栈顶位置
+     */
     private int top;
 
     public MyStack(int maxSize) {

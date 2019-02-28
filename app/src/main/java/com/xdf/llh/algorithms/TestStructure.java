@@ -1,16 +1,12 @@
 package com.xdf.llh.algorithms;
 
-import android.widget.ListView;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.Queue;
 import java.util.Stack;
-import java.util.TreeMap;
 
 /**
  * author: 李刘欢
@@ -57,5 +53,7 @@ public class TestStructure {
          */
         Queue<String> queue = new ArrayDeque<>();
 
+
+//        SortedList list1 = new SortedList(1);
     }
 }
