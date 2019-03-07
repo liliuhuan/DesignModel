@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * author: 李刘欢
  * date：2019/2/20 11:03
  * version:1.0.0
- * description: MyArrayList
+ * description: MyArrayList 数组实现
  */
 public class MyArrayList<T> implements Iterable<T> {
     private static final int DEFAULT_CAPACITY = 10;
@@ -24,6 +24,9 @@ public class MyArrayList<T> implements Iterable<T> {
         doClear();
     }
 
+    /**
+     * 初始化，默认10的数组容器
+     */
     private void doClear() {
         theSize = 0;
         ensureCapacity(DEFAULT_CAPACITY);
@@ -37,20 +40,41 @@ public class MyArrayList<T> implements Iterable<T> {
         return size() == 0;
     }
 
+    /**
+     * 扩容
+     */
     public void trimToSize() {
         ensureCapacity(size());
     }
 
+    /**
+     * 取得某个位置的值
+     *
+     * @param dx 位置
+     * @return
+     */
     public T get(int dx) {
         checkException(dx);
         return theItems[dx];
     }
 
+    /**
+     * 检测异常，只有位置符合的才能进行操作
+     *
+     * @param dx
+     */
     private void checkException(int dx) {
         if (dx < 0 || dx > size())
             throw new ArrayIndexOutOfBoundsException();
     }
 
+    /**
+     * 修改某个位置的值
+     *
+     * @param dx 位置
+     * @param t  值
+     * @return 返回修改前的值
+     */
     public T set(int dx, T t) {
         checkException(dx);
         T tOld = theItems[dx];
@@ -58,6 +82,11 @@ public class MyArrayList<T> implements Iterable<T> {
         return tOld;
     }
 
+    /**
+     * 进行扩容，并拷贝数据到新数组中
+     *
+     * @param newCapacity 扩容的大小
+     */
     private void ensureCapacity(int newCapacity) {
         if (newCapacity < size()) return;
         T[] theItemsOld = this.theItems;
@@ -67,6 +96,12 @@ public class MyArrayList<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * 添加新的值，在尾部
+     *
+     * @param t
+     * @return
+     */
     public boolean add(T t) {
         add(size(), t);
         return true;
@@ -75,13 +110,16 @@ public class MyArrayList<T> implements Iterable<T> {
     /**
      * 在某个位置添加一个元素。
      *
-     * @param idx
-     * @param t
+     * @param idx 添加的位置
+     * @param t   添加的值
      */
     public void add(int idx, T t) {
         if (theItems.length == size()) {
             ensureCapacity(size() * 2 + 1);
         }
+        /**
+         * 将dx位置之后的值，向右移动，留出位置插入新值
+         */
         for (int i = theSize; i > idx; i--) {
             theItems[i] = theItems[i - 1];
         }
@@ -89,8 +127,15 @@ public class MyArrayList<T> implements Iterable<T> {
         theSize++;
     }
 
+    /** 删除idx位置的值
+     * @param idx 位置
+     * @return 删除的值
+     */
     public T remove(int idx) {
         T theItemOld = theItems[idx];
+        /**
+         * 把 idx位置之后的值向左移动一位，相当于删除idx位置的值
+         */
         for (int i = idx; i < size(); i++) {
             theItems[i] = theItems[i + 1];
         }
@@ -98,6 +143,10 @@ public class MyArrayList<T> implements Iterable<T> {
         return theItemOld;
     }
 
+    /**
+     * @return
+     * @see Iterable 迭代器接口实现，可以用迭代器遍历数组
+     */
     @NonNull
     @Override
     public Iterator<T> iterator() {
