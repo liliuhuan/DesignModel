@@ -10,15 +10,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name="com.xdf.llh.other.dagger2.TestDaggerActivity" />
-        <activity android:name="com.xdf.llh.other.rxjava.TestRxjavaActivity" />
-        <activity android:name="com.xdf.llh.other.viewconflict.DispathTouchViewActivity">
+        <service
+           android:name="com.xdf.llh.other.recollect.MyService"
+            android:enabled="true"
+            android:process="com.xdf.llh.other.recollect"
+            android:exported="true"></service>
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.xdf.llh.other.dagger2.TestDaggerActivity" />
+        <activity android:name="com.xdf.llh.other.rxjava.TestRxjavaActivity" />
+        <activity android:name="com.xdf.llh.other.viewconflict.DispathTouchViewActivity">
+
         </activity>
         <activity android:name="com.xdf.llh.other.memoryleak.MemoryLeakActivity" />
         <activity android:name="com.xdf.llh.other.thead.HandleThreadActivity" />
@@ -26,7 +34,7 @@
 
         <service android:name="com.xdf.llh.other.thead.IntentServiceActivity$MyIntentService" />
 
-        <activity android:name="com.xdf.llh.other.thead.AsyncTaskActivity"></activity>
+        <activity android:name="com.xdf.llh.other.thead.AsyncTaskActivity" />
     </application>
 
 </manifest>

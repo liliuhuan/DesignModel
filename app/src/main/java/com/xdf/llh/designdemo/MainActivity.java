@@ -1,17 +1,16 @@
 package com.xdf.llh.designdemo;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
-import com.xdf.llh.designdemo.adapter.AdapterCreator;
-import com.xdf.llh.other.db.AsyDBManager;
-import com.xdf.llh.other.db.BaseBean;
-import com.xdf.llh.other.db.SQLiteDBHelper;
-import com.xdf.llh.other.db.StudentBean;
-import com.xdf.llh.other.db.StudentTable;
-import com.xdf.llh.other.db.ThreadManager;
+import com.xdf.llh.other.recollect.MyService;
+
+import aidl.AidlService;
 
 /**
  * @author dell
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 适配器模式
          */
-        new AdapterCreator().create();
+      //  new AdapterCreator().create();
 
         /***
          * 数据库操作部分
@@ -118,6 +117,54 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        ((TextView) findViewById(R.id.tv)).setText("输入的字符是：\nA1,A2,S2,E1,R4,E2,E3,R5,S3,S4  \n输出字符：\n" + Test.check("A1,A2,S2,E1,R4,E2,E3,R5,S3,S4"));
+      //  ((TextView) findViewById(R.id.tv)).setText("输入的字符是：\nA1,A2,S2,E1,R4,E2,E3,R5,S3,S4  \n输出字符：\n" + Test.check("A1,A2,S2,E1,R4,E2,E3,R5,S3,S4"));
+
+        /**
+         * 本地服务
+         */
+          //bindLocalService();
+        /**
+         * 远程服务 -- AIDL  AIDL（Android Interface Definition Language）是Android接口定义语言的意思，它可以用于让某个Service与多个应用程序组件之间进行跨进程通信，从而可以实现多个应用程序共享同一个Service的功能
+         */
+        bindRemoteService();
+    }
+
+    private void bindRemoteService() {
+        bindService(new Intent(this, MyService.class), new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                AidlService  binder = AidlService.Stub.asInterface(service);
+                try {
+                    Logger.loge("\n getString - >" + binder.getString() + "\n" + "getData - > " + binder.getData().toString());
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+             //   binder = null;
+            }
+        }, BIND_AUTO_CREATE);
+    }
+
+    private void bindLocalService() {
+        bindService(new Intent(this, MyService.class), new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                MyService.MyBinder  binder = (MyService.MyBinder) service;
+                try {
+                    Logger.loge("\n getString - >" + binder.getString() + "\n" + "getData - > " + binder.getData().toString());
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        }, BIND_AUTO_CREATE);
     }
 }

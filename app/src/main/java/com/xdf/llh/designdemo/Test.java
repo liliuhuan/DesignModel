@@ -53,4 +53,10 @@ public class Test {
         }
         return null;
     }
+
+    private void tes(){
+        List<Object> list = new ArrayList<>();
+        list.add(new TestData());
+    }
+
 }
